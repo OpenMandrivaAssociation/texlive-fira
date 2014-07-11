@@ -6,7 +6,7 @@
 # catalog-version undef
 Name:		texlive-fira
 Version:	20140328
-Release:	1
+Release:	2
 Summary:	Fira fonts with LaTeX support
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/fonts/fira
