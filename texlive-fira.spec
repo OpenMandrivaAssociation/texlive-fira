@@ -1,6 +1,6 @@
 Name:		texlive-fira
 Version:	4.2
-Release:	1
+Release:	2
 Summary:	Fira fonts with LaTeX support
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/fonts/fira
