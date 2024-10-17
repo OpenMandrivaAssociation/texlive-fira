@@ -3,7 +3,7 @@ Version:	64422
 Release:	2
 Summary:	Fira fonts with LaTeX support
 Group:		Publishing
-URL:		http://www.ctan.org/tex-archive/fonts/fira
+URL:		https://www.ctan.org/tex-archive/fonts/fira
 License:	OFL
 Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/fira.r%{version}.tar.xz
 Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/fira.doc.r%{version}.tar.xz
