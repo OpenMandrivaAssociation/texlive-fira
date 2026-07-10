@@ -1,49 +1,26 @@
-Name:		texlive-fira
-Version:	64422
-Release:	2
+%global tl_name fira
+%global tl_revision 77682
+
+Name:		texlive-%{tl_name}
+Epoch:		1
+Version:	4.3
+Release:	%{tl_revision}.1
 Summary:	Fira fonts with LaTeX support
 Group:		Publishing
 URL:		https://www.ctan.org/tex-archive/fonts/fira
-License:	OFL
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/fira.r%{version}.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/fira.doc.r%{version}.tar.xz
+License:	ofl lppl
+Source0:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/fira.r%{tl_revision}.tar.xz
+Source1:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/fira.doc.r%{tl_revision}.tar.xz
 BuildArch:	noarch
+BuildSystem:	texlive
 BuildRequires:	texlive-tlpkg
-Requires(pre):	texlive-tlpkg
-Requires(post):	texlive-kpathsea
+%texlive_base_requires
+Provides:	texlive(%{tl_name}) = %{tl_revision}
 
 %description
-This package provides LaTeX, pdfLaTeX, XeLaTeX and LuaLaTeX
-support for the Fira Sans family of fonts (version 2.001),
-designed by Erik Spiekermann and Ralph du Carrois of Carrois
-Type Design. Fira Sans is available in four weights with
-corresponding italics: light, regular, medium, and bold.
+This package provides LaTeX, pdfLaTeX, XeLaTeX and LuaLaTeX support for
+the Fira Sans and Fira Mono families of fonts designed by Erik
+Spiekermann and Ralph du Carrois of Carrois Type Design. Fira Sans is
+available in eleven weights with corresponding italics: light, regular,
+medium, bold, ...
 
-%post
-%{_sbindir}/texlive.post
-
-%postun
-if [ $1 -eq 0 ]; then
-	%{_sbindir}/texlive.post
-fi
-
-#-----------------------------------------------------------------------
-%files
-%{_texmfdistdir}/fonts/enc/dvips/fira
-%{_texmfdistdir}/fonts/map/dvips/fira
-%{_texmfdistdir}/fonts/opentype/public/fira
-%{_texmfdistdir}/fonts/tfm/public/fira
-%{_texmfdistdir}/fonts/type1/public/fira
-%{_texmfdistdir}/fonts/vf/public/fira
-%{_texmfdistdir}/tex/latex/fira
-%doc %{_texmfdistdir}/doc/fonts/fira
-
-#-----------------------------------------------------------------------
-%prep
-%autosetup -p1 -c -a1
-
-%build
-
-%install
-mkdir -p %{buildroot}%{_texmfdistdir}
-cp -fpar fonts tex doc %{buildroot}%{_texmfdistdir}
