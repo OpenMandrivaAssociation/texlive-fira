@@ -1,9 +1,10 @@
 %global tl_name fira
 %global tl_revision 77682
+%global tl_version 4.3
 
 Name:		texlive-%{tl_name}
 Epoch:		1
-Version:	4.3
+Version:	%{tl_version}
 Release:	%{tl_revision}.1
 Summary:	Fira fonts with LaTeX support
 Group:		Publishing
@@ -13,7 +14,8 @@ Source0:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/fira.r%{tl_revis
 Source1:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/fira.doc.r%{tl_revision}.tar.xz
 BuildArch:	noarch
 BuildSystem:	texlive
-Provides:	texlive(%{tl_name}) = %{tl_revision}
+Requires:	texlive-tlpkg
+Provides:	texlive(%{tl_name}) = %{version}
 
 %description
 This package provides LaTeX, pdfLaTeX, XeLaTeX and LuaLaTeX support for
@@ -22,3 +24,10 @@ Spiekermann and Ralph du Carrois of Carrois Type Design. Fira Sans is
 available in eleven weights with corresponding italics: light, regular,
 medium, bold, ...
 
+
+%install -a
+mkdir -p %{buildroot}%{_texmf_updmap_d}
+cat > %{buildroot}%{_texmf_updmap_d}/%{tl_name} <<'TL_DROPIN_EOF'
+# from fira:
+Map fira.map
+TL_DROPIN_EOF
